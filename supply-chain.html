@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIMSEON — Supply Chain</title>
+  <meta name="description" content="AIMSEON Supply Chain: procurement, vendor onboarding, logistics, compliance, and resilient operations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --accent:#00adb5; --header-h:72px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background-color: #0d0d0d; color: #f5f5f5; overflow-x: hidden; }
+    a { color: inherit; }
+    header { position: sticky; top:0; width: 100%; background: rgba(17, 17, 17, 0.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; z-index: 1000; border-bottom: 1px solid #222; height: var(--header-h); }
+    header .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+    nav { display: flex; gap: 1.2rem; }
+    nav a { text-decoration: none; color: #f5f5f5; font-weight: 500; transition: color 0.2s ease; }
+    nav a:hover { color: var(--accent); }
+    .menu-toggle { display:none; }
+
+    .hero { min-height: 46vh; display:grid; place-items:center; text-align:center; padding: 4rem 1.5rem; background: radial-gradient(60% 60% at 50% 50%, rgba(0,173,181,.15), rgba(0,0,0,0) 70%), linear-gradient(135deg, #0d0d0d, #1a1a1a); border-bottom:1px solid #1c1c1c;}
+    .hero h1 { font-size: 2.6rem; margin: 0 0 .5rem; }
+    .hero p { color:#cfd8dc; max-width: 900px; margin: .25rem auto 0; }
+
+    .breadcrumbs { display:flex; gap:.5rem; justify-content:center; align-items:center; font-size:.95rem; color:#9aa0a6; margin-top:.75rem;}
+    .breadcrumbs a { color:#b0bec5; text-decoration:none; }
+    .breadcrumbs a:hover { color:#e0f7fa; text-decoration:underline; }
+
+    main { padding: 2rem 1.25rem 4rem; max-width:1200px; margin:0 auto; }
+    .two-col { display:grid; grid-template-columns: 1.15fr 1fr; gap: 1.6rem; align-items:start; }
+    .panel { background:#121212; border:1px solid #222; border-radius:16px; padding:1.4rem; box-shadow: 0 0 12px rgba(0,0,0,.35); }
+    .panel h2 { margin:.25rem 0 .6rem; color:var(--accent); font-size:1.35rem; }
+    .panel p { color:#c5c7c9; line-height:1.7; }
+    .bullets { margin:.75rem 0 0; padding-left:1rem; }
+    .bullets li { margin:.4rem 0; color:#cfd8dc; }
+
+    .kpis { display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-top:1rem; }
+    .kpi { background:#0f1111; border:1px solid #1f2222; border-radius:14px; padding:1rem; text-align:center; }
+    .kpi b { display:block; font-size:1.4rem; color:#e0fbff; }
+    .kpi span { color:#9ad7dc; font-size:.95rem; }
+
+    .section-title { font-size:1.25rem; margin:2.2rem 0 .6rem; color:#e7f9fb; }
+    .cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; }
+    .card { background:#121212; border:1px solid #222; border-radius:14px; padding:1rem; }
+    .card h3 { color:var(--accent); margin:.25rem 0 .4rem; font-size:1.05rem; }
+    .card p { color:#c5c7c9; }
+
+    .cta { margin-top:2rem; display:flex; gap:.8rem; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1.2rem; border-radius:999px; border:1px solid rgba(0,173,181,.45); background:rgba(0,173,181,.12); color:#e0fbff; text-decoration:none; font-weight:700; }
+    .btn:hover { background:rgba(0,173,181,.2); }
+
+    footer { background: #111; text-align: center; padding: 1rem; font-size: 0.9rem; border-top: 1px solid #222; color: #aaa; }
+
+    @media(max-width:980px){ .two-col{ grid-template-columns:1fr; } }
+    @media(max-width:768px){
+      nav { display:none; }
+      .menu-toggle { display:block; font-size:1.6rem; background:none; border:none; color:#fff; }
+      .kpis { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo">AIMSEON</div>
+  <nav aria-label="Primary">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="services.html" data-nav="services">Services</a>
+    <a href="brands.html" data-nav="brands">Brands</a>
+    <a href="about.html" data-nav="about">About</a>
+    <a href="about/team.html" data-nav="team">Team</a>
+    <a href="blog.html" data-nav="blog">Blog</a>
+    <a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuDropdown">&#x22EE;</button>
+  <div class="menu-dropdown" id="menuDropdown" role="menu">
+    <a href="index.html" role="menuitem" data-nav="home">Home</a>
+    <a href="services.html" role="menuitem" data-nav="services">Services</a>
+    <a href="brands.html" role="menuitem" data-nav="brands">Brands</a>
+    <a href="about.html" role="menuitem" data-nav="about">About</a>
+    <a href="about/team.html" role="menuitem" data-nav="team">Team</a>
+    <a href="blog.html" role="menuitem" data-nav="blog">Blog</a>
+    <a href="contact.html" role="menuitem" data-nav="contact">Contact</a>
+  </div>
+</header>
+
+  <section class="hero">
+    <div>
+      <div class="breadcrumbs">
+        <a href="https://aimseon.com/">Home</a> <span>›</span> <a href="/services.html">Services</a> <span>›</span> <span>Supply Chain</span>
+      </div>
+      <h1>Supply Chain</h1>
+      <p>Procurement, vendor onboarding, logistics orchestration, and compliance—built for resilience and scale.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="two-col">
+      <section class="panel">
+        <h2>Core capabilities</h2>
+        <p>From sourcing to last‑mile, we design supply chains that balance cost, speed, and quality—especially for public sector compliance.</p>
+        <ul class="bullets">
+          <li>Vendor discovery, qualification & onboarding</li>
+          <li>RFP/RFQ drafting & bid evaluation support</li>
+          <li>Contracting, SLA design, and governance</li>
+          <li>Logistics planning, tracking, and issue escalation</li>
+        </ul>
+
+        <div class="kpis">
+          <div class="kpi"><b>2–6 wks</b><span>Supplier onboarding</span></div>
+          <div class="kpi"><b>↑ OTIF</b><span>On‑time, in‑full delivery</span></div>
+          <div class="kpi"><b>Risk ↓</b><span>Compliance & continuity</span></div>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="mailto:info@aimseon.com"><i class="fa fa-envelope"></i> Discuss your needs</a>
+          <a class="btn" href="/services.html"><i class="fa fa-arrow-left"></i> Back to Services</a>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <h2>Compliance & Assurance</h2>
+        <p>We operate with documented controls—especially for government programs—so audits are fast and painless.</p>
+        <ul class="bullets">
+          <li>Checklist‑driven compliance artifacts</li>
+          <li>Vendor risk scoring and backups</li>
+          <li>QC/QA sampling plans and acceptance criteria</li>
+          <li>Traceability and documentation</li>
+        </ul>
+      </aside>
+    </div>
+
+    <h2 class="section-title">What we run</h2>
+    <div class="cards">
+      <div class="card">
+        <h3><i class="fa fa-boxes-stacked"></i> Sourcing</h3>
+        <p>Local and international vendor pools for competitive pricing and lead time.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa fa-file-signature"></i> Contracts</h3>
+        <p>Fit‑for‑purpose SLAs, warranties, and penalty clauses.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa fa-truck-fast"></i> Logistics</h3>
+        <p>Scheduling, tracking, and exception management with rapid comms.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa fa-shield-halved"></i> Compliance</h3>
+        <p>Documentation and audits that stand up to scrutiny.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Engagement paths</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Turnkey delivery</h3>
+        <p>We own sourcing to delivery with clear acceptance criteria.</p>
+      </div>
+      <div class="card">
+        <h3>Co‑managed</h3>
+        <p>Shared execution with your PMO and vendors.</p>
+      </div>
+      <div class="card">
+        <h3>Advisory</h3>
+        <p>Playbooks, templates, and vendor lists your team can run.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a class="btn" href="mailto:info@aimseon.com"><i class="fa fa-envelope"></i> Start a sourcing sprint</a>
+      <a class="btn" href="/services.html"><i class="fa fa-arrow-left"></i> Back to Services</a>
+    </div>
+  </main>
+
+  <footer>© 2025 AIMSEON</footer>
+<script>
+(function(){
+  const path = location.pathname.replace(/\/+$/, '');
+  const file = path.split('/').pop() || 'index.html';
+  const dir = path.split('/').slice(0,-1).join('/');
+  // Map page to nav key
+  const map = {
+    'index.html':'home',
+    'services.html':'services',
+    'brands.html':'brands',
+    'about.html':'about',
+    'team.html':'team',
+    'blog.html':'blog',
+    'contact.html':'contact',
+    'business-strategy.html':'services',
+    'operations-optimization.html':'services',
+    'supply-chain.html':'services',
+    'market-research.html':'services',
+    'company.html':'about',
+    'mission-vision.html':'about'
+  };
+  let key = map[file] || '';
+  // Handle nested team: if path ends with /about/team.html, force 'team'
+  if (/\/about\/team\.html$/.test(path)) key = 'team';
+  document.querySelectorAll(`[data-nav="${key}"]`).forEach(a=>{
+    a.style.color = 'var(--accent)';
+    a.style.fontWeight = '700';
+  });
+
+  const toggle = document.querySelector('.menu-toggle');
+  const dd = document.getElementById('menuDropdown');
+  function close(){ if(dd){ dd.classList.remove('show'); } if(toggle){ toggle.setAttribute('aria-expanded','false'); } }
+  toggle && toggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const open = !dd?.classList.contains('show');
+    dd && dd.classList.toggle('show');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', (e)=>{ if(dd && !dd.contains(e.target) && !toggle?.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>
+<script>
+// GH Pages subfolder fixer — keeps links working at /username.github.io/repo/
+(function () {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var repo = parts[0] || ''; // e.g., 'aimseon'
+  var prefix = repo ? '/' + repo : '';
+
+  // Fix root-slash links
+  document.querySelectorAll('a[href^="/"]').forEach(function (a) {
+    var h = a.getAttribute('href');
+    if (!h.startsWith(prefix + '/')) a.setAttribute('href', prefix + h);
+  });
+
+  // Fix hardcoded domain links to aimseon.com
+  document.querySelectorAll('a[href^="https://aimseon.com"]').forEach(function (a) {
+    var rel = a.getAttribute('href').replace('https://aimseon.com', '');
+    rel = rel.replace(/^\/+/, '');  // strip leading slashes
+    a.setAttribute('href', (prefix ? prefix + '/' : '') + rel);
+  });
+})();
+</script>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIMSEON — Services</title>
+  <meta name="description" content="AIMSEON Services: Business Strategy, Operations Optimization, Supply Chain, and Market Research." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --accent:#00adb5; --header-h:72px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background-color: #0d0d0d; color: #f5f5f5; overflow-x: hidden; position: relative; }
+    a { color: inherit; }
+    header { position: sticky; top:0; width: 100%; background: rgba(17, 17, 17, 0.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; z-index: 1000; border-bottom: 1px solid #222; height: var(--header-h); }
+    header .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 3px; color: #fff; user-select: none; }
+    nav { display: flex; gap: 1.2rem; }
+    nav a { text-decoration: none; color: #f5f5f5; font-weight: 500; transition: color 0.2s ease; }
+    nav a:hover { color: var(--accent); }
+    .menu-toggle { display:none; }
+
+    .hero { min-height: 46vh; display:grid; place-items:center; text-align:center; padding: 4rem 1.5rem; background: radial-gradient(60% 60% at 50% 50%, rgba(0,173,181,.15), rgba(0,0,0,0) 70%), linear-gradient(135deg, #0d0d0d, #1a1a1a); border-bottom:1px solid #1c1c1c;}
+    .hero h1 { font-size: 2.6rem; margin: 0 0 .5rem; }
+    .hero p { color:#cfd8dc; max-width: 860px; margin: .25rem auto 0; }
+
+    .breadcrumbs { display:flex; gap:.5rem; justify-content:center; align-items:center; font-size:.95rem; color:#9aa0a6; margin-top:.75rem;}
+    .breadcrumbs a { color:#b0bec5; text-decoration:none; }
+    .breadcrumbs a:hover { color:#e0f7fa; text-decoration:underline; }
+
+    main { padding: 2rem 1.25rem 4rem; max-width:1200px; margin:0 auto; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; margin-top: 1.25rem; }
+    .card { background:#121212; border:1px solid #222; border-radius:16px; padding:1.4rem; box-shadow: 0 0 12px rgba(0,0,0,.35); display:flex; flex-direction:column; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .card:hover { transform: translateY(-6px); border-color: rgba(0,173,181,.65); box-shadow: 0 14px 24px rgba(0,173,181,.12); }
+    .card h3 { color:var(--accent); margin:.25rem 0 .4rem; font-size:1.15rem; }
+    .card p { color:#c5c7c9; line-height:1.55; font-size:.98rem; }
+    .pill { margin-top:auto; align-self:flex-start; padding:.55rem 1rem; border-radius:22px; border:1px solid rgba(0,173,181,.45); color:#e0fbff; background: rgba(0,173,181,.12); text-decoration:none; font-weight:700; letter-spacing:.2px; }
+    .pill:hover { background: rgba(0,173,181,.2); }
+
+    .section-title { font-size:1.4rem; margin:2.2rem 0 .4rem; }
+    .list { text-align:left; color:#cfd8dc; line-height:1.7; }
+
+    footer { background: #111; text-align: center; padding: 1rem; font-size: 0.9rem; border-top: 1px solid #222; color: #aaa; }
+
+    @media(max-width:768px){
+      nav { display:none; }
+      .menu-toggle { display:block; font-size:1.6rem; background:none; border:none; color:#fff; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo">AIMSEON</div>
+  <nav aria-label="Primary">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="services.html" data-nav="services">Services</a>
+    <a href="brands.html" data-nav="brands">Brands</a>
+    <a href="about.html" data-nav="about">About</a>
+    <a href="about/team.html" data-nav="team">Team</a>
+    <a href="blog.html" data-nav="blog">Blog</a>
+    <a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuDropdown">&#x22EE;</button>
+  <div class="menu-dropdown" id="menuDropdown" role="menu">
+    <a href="index.html" role="menuitem" data-nav="home">Home</a>
+    <a href="services.html" role="menuitem" data-nav="services">Services</a>
+    <a href="brands.html" role="menuitem" data-nav="brands">Brands</a>
+    <a href="about.html" role="menuitem" data-nav="about">About</a>
+    <a href="about/team.html" role="menuitem" data-nav="team">Team</a>
+    <a href="blog.html" role="menuitem" data-nav="blog">Blog</a>
+    <a href="contact.html" role="menuitem" data-nav="contact">Contact</a>
+  </div>
+</header>
+
+  <section class="hero">
+    <div>
+      <div class="breadcrumbs">
+        <a href="https://aimseon.com/">Home</a> <span>›</span> <span>Services</span>
+      </div>
+      <h1>Services</h1>
+      <p>Strategy, execution, and supply solutions—purpose‑built for government and enterprise partners, as well as private clients.</p>
+    </div>
+  </section>
+
+  <main>
+    <h2 class="section-title">What we do</h2>
+    <div class="grid">
+      <article class="card">
+        <i class="fa-solid fa-chart-line" aria-hidden="true" style="font-size:1.6rem;color:#9be7f3"></i>
+        <h3>Business Strategy</h3>
+        <p>Market entry, growth playbooks, and performance frameworks aligned to measurable outcomes.</p>
+        <a class="pill" href="https://aimseon.com/services/business-strategy.html">Explore Strategy</a>
+      </article>
+
+      <article class="card">
+        <i class="fa-solid fa-gears" aria-hidden="true" style="font-size:1.6rem;color:#9be7f3"></i>
+        <h3>Operations Optimization</h3>
+        <p>Lean process design, cost reduction, and SOPs that scale quality across teams and vendors.</p>
+        <a class="pill" href="https://aimseon.com/services/operations-optimization.html">Optimize Ops</a>
+      </article>
+
+      <article class="card">
+        <i class="fa-solid fa-truck" aria-hidden="true" style="font-size:1.6rem;color:#9be7f3"></i>
+        <h3>Supply Chain</h3>
+        <p>Procurement, vendor onboarding, and logistics orchestration with full compliance.</p>
+        <a class="pill" href="https://aimseon.com/services/supply-chain.html">Build Supply Chain</a>
+      </article>
+
+      <article class="card">
+        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true" style="font-size:1.6rem;color:#9be7f3"></i>
+        <h3>Market Research</h3>
+        <p>Field research and analytical insights that turn signals into decisions.</p>
+        <a class="pill" href="https://aimseon.com/services/market-research.html">See Insights</a>
+      </article>
+    </div>
+
+    <h2 class="section-title">Engagement models</h2>
+    <ul class="list">
+      <li><b>Advisory:</b> Project‑based strategic guidance, reports, and roadmaps.</li>
+      <li><b>Implementation:</b> We co‑execute with your team and partners.</li>
+      <li><b>Managed Services:</b> Ongoing delivery with SLA and KPIs.</li>
+    </ul>
+  </main>
+
+  <footer>© 2025 AIMSEON</footer>
+<script>
+(function(){
+  const path = location.pathname.replace(/\/+$/, '');
+  const file = path.split('/').pop() || 'index.html';
+  const dir = path.split('/').slice(0,-1).join('/');
+  // Map page to nav key
+  const map = {
+    'index.html':'home',
+    'services.html':'services',
+    'brands.html':'brands',
+    'about.html':'about',
+    'team.html':'team',
+    'blog.html':'blog',
+    'contact.html':'contact',
+    'business-strategy.html':'services',
+    'operations-optimization.html':'services',
+    'supply-chain.html':'services',
+    'market-research.html':'services',
+    'company.html':'about',
+    'mission-vision.html':'about'
+  };
+  let key = map[file] || '';
+  // Handle nested team: if path ends with /about/team.html, force 'team'
+  if (/\/about\/team\.html$/.test(path)) key = 'team';
+  document.querySelectorAll(`[data-nav="${key}"]`).forEach(a=>{
+    a.style.color = 'var(--accent)';
+    a.style.fontWeight = '700';
+  });
+
+  const toggle = document.querySelector('.menu-toggle');
+  const dd = document.getElementById('menuDropdown');
+  function close(){ if(dd){ dd.classList.remove('show'); } if(toggle){ toggle.setAttribute('aria-expanded','false'); } }
+  toggle && toggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const open = !dd?.classList.contains('show');
+    dd && dd.classList.toggle('show');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', (e)=>{ if(dd && !dd.contains(e.target) && !toggle?.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>
+<script>
+// GH Pages subfolder fixer — keeps links working at /username.github.io/repo/
+(function () {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var repo = parts[0] || ''; // e.g., 'aimseon'
+  var prefix = repo ? '/' + repo : '';
+
+  // Fix root-slash links
+  document.querySelectorAll('a[href^="/"]').forEach(function (a) {
+    var h = a.getAttribute('href');
+    if (!h.startsWith(prefix + '/')) a.setAttribute('href', prefix + h);
+  });
+
+  // Fix hardcoded domain links to aimseon.com
+  document.querySelectorAll('a[href^="https://aimseon.com"]').forEach(function (a) {
+    var rel = a.getAttribute('href').replace('https://aimseon.com', '');
+    rel = rel.replace(/^\/+/, '');  // strip leading slashes
+    a.setAttribute('href', (prefix ? prefix + '/' : '') + rel);
+  });
+})();
+</script>

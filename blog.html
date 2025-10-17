@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AIMSEON — Blog</title>
+  <meta name="description" content="Insights from AIMSEON on strategy, operations, supply chains, and market research." />
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --accent:#00adb5; --header-h:72px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background-color: #0d0d0d; color: #f5f5f5; overflow-x: hidden; }
+    a { color: inherit; }
+    header { position: sticky; top:0; width: 100%; background: rgba(17, 17, 17, 0.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; z-index: 1000; border-bottom: 1px solid #222; height: var(--header-h); }
+    header .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 3px; color: #fff; user-select: none; }
+    nav { display: flex; gap: 1.2rem; }
+    nav a { text-decoration: none; color: #f5f5f5; font-weight: 500; transition: color 0.2s ease; }
+    nav a:hover { color: var(--accent); }
+    .menu-toggle { display:none; }
+
+    .hero { min-height: 38vh; display:grid; place-items:center; text-align:center; padding: 3.2rem 1.5rem; background: radial-gradient(60% 60% at 50% 50%, rgba(0,173,181,.15), rgba(0,0,0,0) 70%), linear-gradient(135deg, #0d0d0d, #1a1a1a); border-bottom:1px solid #1c1c1c;}
+    .hero h1 { font-size: 2.4rem; margin: 0 0 .5rem; }
+    .hero p { color:#cfd8dc; max-width: 860px; margin: .25rem auto 0; }
+
+    .breadcrumbs { display:flex; gap:.5rem; justify-content:center; align-items:center; font-size:.95rem; color:#9aa0a6; margin-top:.6rem;}
+    .breadcrumbs a { color:#b0bec5; text-decoration:none; }
+    .breadcrumbs a:hover { color:#e0f7fa; text-decoration:underline; }
+
+    main { padding: 2rem 1.25rem 4rem; max-width:1100px; margin:0 auto; }
+
+    /* Blog utilities */
+    .toolbar { display:flex; gap:.7rem; flex-wrap:wrap; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+    .search { flex:1 1 320px; display:flex; align-items:center; gap:.5rem; background:#121212; border:1px solid #222; border-radius:12px; padding:.55rem .8rem; }
+    .search input { flex:1; background:transparent; border:0; outline:0; color:#e0fbff; font-size:1rem; }
+    .chips { display:flex; gap:.5rem; flex-wrap:wrap; }
+    .chip { padding:.45rem .8rem; background:#121212; border:1px solid #222; border-radius:999px; font-size:.95rem; cursor:pointer; }
+    .chip.active { border-color: rgba(0,173,181,.6); background: rgba(0,173,181,.12); color:#e0fbff; }
+
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; }
+    .post { background:#121212; border:1px solid #222; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
+    .thumb { aspect-ratio: 16/9; background:#0f1111; display:grid; place-items:center; color:#8aa; font-size:.95rem; }
+    .body { padding:1rem; display:flex; flex-direction:column; gap:.4rem; }
+    .title { font-weight:700; color:#e0fbff; }
+    .meta { color:#9ad7dc; font-size:.9rem; }
+    .excerpt { color:#c5c7c9; }
+    .more { align-self:flex-start; margin-top:.4rem; display:inline-block; padding:.55rem 1rem; border-radius:22px; border:1px solid rgba(0,173,181,.45); color:#e0fbff; background: rgba(0,173,181,.12); text-decoration:none; font-weight:700; }
+    .more:hover { background: rgba(0,173,181,.2); }
+
+    .pager { display:flex; justify-content:center; gap:.4rem; margin-top:1.1rem; }
+    .page-btn { padding:.5rem .85rem; border:1px solid #222; background:#121212; color:#e0fbff; border-radius:10px; cursor:pointer; }
+    .page-btn[disabled] { opacity:.5; cursor:not-allowed; }
+
+    article.content { background:#121212; border:1px solid #222; border-radius:16px; padding:1.4rem; }
+    article.content h1 { margin-top:0; }
+    article.content p, article.content li { color:#c5c7c9; line-height:1.7; }
+
+    footer { background: #111; text-align: center; padding: 1rem; font-size: 0.9rem; border-top: 1px solid #222; color: #aaa; }
+
+    @media(max-width:768px){
+      nav { display:none; }
+      .menu-toggle { display:block; font-size:1.6rem; background:none; border:none; color:#fff; }
+    }
+  </style>
+
+</head>
+<body>
+  <header>
+  <div class="logo">AIMSEON</div>
+  <nav aria-label="Primary">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="services.html" data-nav="services">Services</a>
+    <a href="brands.html" data-nav="brands">Brands</a>
+    <a href="about.html" data-nav="about">About</a>
+    <a href="about/team.html" data-nav="team">Team</a>
+    <a href="blog.html" data-nav="blog">Blog</a>
+    <a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuDropdown">&#x22EE;</button>
+  <div class="menu-dropdown" id="menuDropdown" role="menu">
+    <a href="index.html" role="menuitem" data-nav="home">Home</a>
+    <a href="services.html" role="menuitem" data-nav="services">Services</a>
+    <a href="brands.html" role="menuitem" data-nav="brands">Brands</a>
+    <a href="about.html" role="menuitem" data-nav="about">About</a>
+    <a href="about/team.html" role="menuitem" data-nav="team">Team</a>
+    <a href="blog.html" role="menuitem" data-nav="blog">Blog</a>
+    <a href="contact.html" role="menuitem" data-nav="contact">Contact</a>
+  </div>
+</header>
+
+  <section class="hero">
+    <div>
+      <div class="breadcrumbs"><a href="https://aimseon.com/">Home</a> <span>›</span> <span>Blog</span></div>
+      <h1>Insights</h1>
+      <p>Notes from the field: strategy, operations, supply chains, and research—built for outcomes.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="toolbar">
+      <div class="search" role="search">
+        <i class="fa fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="search" type="search" placeholder="Search articles…" autocomplete="off" />
+      </div>
+      <div class="chips" id="chips" aria-label="Filter by tag">
+        <button class="chip active" data-tag="all">All</button>
+        <button class="chip" data-tag="strategy">Strategy</button>
+        <button class="chip" data-tag="operations">Operations</button>
+        <button class="chip" data-tag="supply">Supply</button>
+        <button class="chip" data-tag="research">Research</button>
+      </div>
+    </div>
+
+    <section class="grid" id="posts">
+      <!-- Posts rendered by JS below -->
+    </section>
+
+    <div class="pager">
+      <button class="page-btn" id="prev">Prev</button>
+      <button class="page-btn" id="next">Next</button>
+    </div>
+  </main>
+
+  <footer>© 2025 AIMSEON</footer>
+
+  <script>
+    const POSTS = [
+      { id: 'post-ops-001', title: 'Four levers to cut cycle time by 20%', date: '2025-09-12', tag: 'operations', excerpt: 'A quick playbook for shaving days off your process without adding headcount.', href: 'https://aimseon.com/blog-post.html' },
+      { id: 'post-sup-001', title: 'Vendor tiering that actually works', date: '2025-08-18', tag: 'supply', excerpt: 'A simple approach to tier vendors and keep quality high—even as you scale.', href: 'https://aimseon.com/blog-post.html' },
+      { id: 'post-str-001', title: 'OKRs that teams adopt in a week', date: '2025-06-03', tag: 'strategy', excerpt: 'Make OKRs useful with a cadence your team won’t ignore.', href: 'https://aimseon.com/blog-post.html' },
+      { id: 'post-res-001', title: 'Designing a mixed‑method study', date: '2025-05-22', tag: 'research', excerpt: 'Blend qual and quant to get answers that travel from slides to the field.', href: 'https://aimseon.com/blog-post.html' }
+    ];
+
+    const PAGE_SIZE = 6;
+    let page = 0;
+    let activeTag = 'all';
+    let query = '';
+
+    const postsEl = document.getElementById('posts');
+    const chips = document.querySelectorAll('.chip');
+    const search = document.getElementById('search');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+
+    function render(){
+      const filtered = POSTS.filter(p => 
+        (activeTag === 'all' || p.tag === activeTag) &&
+        (p.title.toLowerCase().includes(query) || p.excerpt.toLowerCase().includes(query))
+      );
+      const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+      page = Math.min(page, totalPages - 1);
+      const slice = filtered.slice(page * PAGE_SIZE, (page+1) * PAGE_SIZE);
+      postsEl.innerHTML = slice.map(p => `
+        <article class="post">
+          <div class="thumb">Cover image</div>
+          <div class="body">
+            <div class="title">${p.title}</div>
+            <div class="meta">${new Date(p.date).toLocaleDateString()} • ${p.tag[0].toUpperCase()+p.tag.slice(1)}</div>
+            <p class="excerpt">${p.excerpt}</p>
+            <a class="more" href="${p.href}">Read more</a>
+          </div>
+        </article>
+      `).join('');
+      prev.disabled = page === 0;
+      next.disabled = page >= totalPages - 1;
+    }
+
+    chips.forEach(c => c.addEventListener('click', () => {
+      chips.forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      activeTag = c.dataset.tag;
+      page = 0;
+      render();
+    }));
+
+    search.addEventListener('input', () => { query = search.value.trim().toLowerCase(); page = 0; render(); });
+    prev.addEventListener('click', () => { page = Math.max(0, page - 1); render(); });
+    next.addEventListener('click', () => { page = page + 1; render(); });
+
+    render();
+  </script>
+<script>
+(function(){
+  const path = location.pathname.replace(/\/+$/, '');
+  const file = path.split('/').pop() || 'index.html';
+  const dir = path.split('/').slice(0,-1).join('/');
+  // Map page to nav key
+  const map = {
+    'index.html':'home',
+    'services.html':'services',
+    'brands.html':'brands',
+    'about.html':'about',
+    'team.html':'team',
+    'blog.html':'blog',
+    'contact.html':'contact',
+    'business-strategy.html':'services',
+    'operations-optimization.html':'services',
+    'supply-chain.html':'services',
+    'market-research.html':'services',
+    'company.html':'about',
+    'mission-vision.html':'about'
+  };
+  let key = map[file] || '';
+  // Handle nested team: if path ends with /about/team.html, force 'team'
+  if (/\/about\/team\.html$/.test(path)) key = 'team';
+  document.querySelectorAll(`[data-nav="${key}"]`).forEach(a=>{
+    a.style.color = 'var(--accent)';
+    a.style.fontWeight = '700';
+  });
+
+  const toggle = document.querySelector('.menu-toggle');
+  const dd = document.getElementById('menuDropdown');
+  function close(){ if(dd){ dd.classList.remove('show'); } if(toggle){ toggle.setAttribute('aria-expanded','false'); } }
+  toggle && toggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const open = !dd?.classList.contains('show');
+    dd && dd.classList.toggle('show');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', (e)=>{ if(dd && !dd.contains(e.target) && !toggle?.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>
+<script>
+// GH Pages subfolder fixer — keeps links working at /username.github.io/repo/
+(function () {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var repo = parts[0] || ''; // e.g., 'aimseon'
+  var prefix = repo ? '/' + repo : '';
+
+  // Fix root-slash links
+  document.querySelectorAll('a[href^="/"]').forEach(function (a) {
+    var h = a.getAttribute('href');
+    if (!h.startsWith(prefix + '/')) a.setAttribute('href', prefix + h);
+  });
+
+  // Fix hardcoded domain links to aimseon.com
+  document.querySelectorAll('a[href^="https://aimseon.com"]').forEach(function (a) {
+    var rel = a.getAttribute('href').replace('https://aimseon.com', '');
+    rel = rel.replace(/^\/+/, '');  // strip leading slashes
+    a.setAttribute('href', (prefix ? prefix + '/' : '') + rel);
+  });
+})();
+</script>

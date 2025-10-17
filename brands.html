@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIMSEON — Brands & Partners</title>
+  <meta name="description" content="AIMSEON Brands & Partners: featured partners, sectors we serve, and case studies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --accent:#00adb5; --header-h:72px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background-color: #0d0d0d; color: #f5f5f5; overflow-x: hidden; }
+    a { color: inherit; }
+    header { position: sticky; top:0; width: 100%; background: rgba(17, 17, 17, 0.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; z-index: 1000; border-bottom: 1px solid #222; height: var(--header-h); }
+    header .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+    nav { display: flex; gap: 1.2rem; }
+    nav a { text-decoration: none; color: #f5f5f5; font-weight: 500; transition: color 0.2s ease; }
+    nav a:hover { color: var(--accent); }
+    .menu-toggle { display:none; }
+
+    .hero { min-height: 46vh; display:grid; place-items:center; text-align:center; padding: 4rem 1.5rem; background: radial-gradient(60% 60% at 50% 50%, rgba(0,173,181,.15), rgba(0,0,0,0) 70%), linear-gradient(135deg, #0d0d0d, #1a1a1a); border-bottom:1px solid #1c1c1c;}
+    .hero h1 { font-size: 2.6rem; margin: 0 0 .5rem; }
+    .hero p { color:#cfd8dc; max-width: 900px; margin: .25rem auto 0; }
+
+    .breadcrumbs { display:flex; gap:.5rem; justify-content:center; align-items:center; font-size:.95rem; color:#9aa0a6; margin-top:.75rem;}
+    .breadcrumbs a { color:#b0bec5; text-decoration:none; }
+    .breadcrumbs a:hover { color:#e0f7fa; text-decoration:underline; }
+
+    main { padding: 2rem 1.25rem 4rem; max-width:1200px; margin:0 auto; }
+
+    /* Featured slider */ 
+    .logo-slider { overflow:hidden; position:relative; border:1px solid #222; border-radius:16px; padding: 0.75rem; background:#121212; }
+    .logo-track { display:flex; width:max-content; gap:3rem; animation: marquee 22s linear infinite; }
+    .logo-slider:hover .logo-track { animation-play-state: paused; }
+    .logo { height:52px; width:auto; opacity:.9; filter: grayscale(100%); transition: transform .2s, opacity .2s, filter .2s; }
+    .logo:hover { opacity:1; filter: none; transform: scale(1.06); }
+    @keyframes marquee { 0%{ transform: translateX(0); } 100%{ transform: translateX(-50%); } }
+
+    /* Tiers */
+    .tiers { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-top:2rem; }
+    .tier { background:#121212; border:1px solid #222; border-radius:16px; padding:1.25rem; }
+    .tier h3 { color:var(--accent); margin:.2rem 0 .6rem; font-size:1.15rem; }
+    .tier ul { margin:.5rem 0 0; padding-left:1.1rem; color:#c5c7c9; line-height:1.6; }
+
+    /* Sectors */
+    .sectors { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-top:2rem; }
+    .sector { background:#121212; border:1px solid #222; border-radius:14px; padding:1rem; }
+    .sector h4 { margin:.2rem 0 .4rem; color:var(--accent) }
+
+    /* Case studies */
+    .cases { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-top:1.2rem; }
+    .case { background:#121212; border:1px solid #222; border-radius:16px; overflow: hidden; display:flex; flex-direction:column; }
+    .case .img { background:#0f1111; height:140px; display:grid; place-items:center; font-size:.9rem; color:#90a4ae; border-bottom:1px solid #1f1f1f; }
+    .case .body { padding:1rem; }
+    .case h3 { color:#e0fbff; margin:.2rem 0 .5rem; font-size:1.05rem; }
+    .meta { color:#9ad7dc; font-size:.9rem; }
+    .more { margin-top:.6rem; display:inline-block; padding:.55rem 1rem; border-radius:22px; border:1px solid rgba(0,173,181,.45); color:#e0fbff; background: rgba(0,173,181,.12); text-decoration:none; font-weight:700; }
+    .more:hover { background: rgba(0,173,181,.2); }
+
+    .cta { margin-top:2rem; display:flex; gap:.8rem; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1.2rem; border-radius:999px; border:1px solid rgba(0,173,181,.45); background:rgba(0,173,181,.12); color:#e0fbff; text-decoration:none; font-weight:700; }
+    .btn:hover { background:rgba(0,173,181,.2); }
+
+    footer { background: #111; text-align: center; padding: 1rem; font-size: 0.9rem; border-top: 1px solid #222; color: #aaa; }
+
+    @media(max-width:768px){
+      nav { display:none; }
+      .menu-toggle { display:block; font-size:1.6rem; background:none; border:none; color:#fff; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo">AIMSEON</div>
+  <nav aria-label="Primary">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="services.html" data-nav="services">Services</a>
+    <a href="brands.html" data-nav="brands">Brands</a>
+    <a href="about.html" data-nav="about">About</a>
+    <a href="about/team.html" data-nav="team">Team</a>
+    <a href="blog.html" data-nav="blog">Blog</a>
+    <a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuDropdown">&#x22EE;</button>
+  <div class="menu-dropdown" id="menuDropdown" role="menu">
+    <a href="index.html" role="menuitem" data-nav="home">Home</a>
+    <a href="services.html" role="menuitem" data-nav="services">Services</a>
+    <a href="brands.html" role="menuitem" data-nav="brands">Brands</a>
+    <a href="about.html" role="menuitem" data-nav="about">About</a>
+    <a href="about/team.html" role="menuitem" data-nav="team">Team</a>
+    <a href="blog.html" role="menuitem" data-nav="blog">Blog</a>
+    <a href="contact.html" role="menuitem" data-nav="contact">Contact</a>
+  </div>
+</header>
+
+  <section class="hero">
+    <div>
+      <div class="breadcrumbs">
+        <a href="https://aimseon.com/">Home</a> <span>›</span> <span>Brands</span>
+      </div>
+      <h1>Brands & Partners</h1>
+      <p>We collaborate with leading brands to deliver quality, compliance, and on‑time projects for government and enterprise customers.</p>
+    </div>
+  </section>
+
+  <main>
+    <h2 style="margin:0 0 .6rem;">Featured partners</h2>
+    <div class="logo-slider" aria-label="Featured partner logos">
+      <div class="logo-track">
+        <img class="logo" src="brand1.png" alt="Brand 1">
+        <img class="logo" src="brand2.png" alt="Brand 2">
+        <img class="logo" src="brand3.png" alt="Brand 3">
+        <img class="logo" src="brand4.png" alt="Brand 4">
+        <!-- duplicate for loop effect -->
+        <img class="logo" src="brand1.png" alt="Brand 1">
+        <img class="logo" src="brand2.png" alt="Brand 2">
+        <img class="logo" src="brand3.png" alt="Brand 3">
+        <img class="logo" src="brand4.png" alt="Brand 4">
+      </div>
+    </div>
+
+    <h2 style="margin:2rem 0 .6rem;">Partner tiers</h2>
+    <div class="tiers">
+      <section class="tier">
+        <h3>Strategic</h3>
+        <ul>
+          <li>Multi‑year collaboration</li>
+          <li>Co‑developed roadmaps</li>
+          <li>Joint compliance artifacts</li>
+        </ul>
+      </section>
+      <section class="tier">
+        <h3>Preferred</h3>
+        <ul>
+          <li>Priority vendor for supply needs</li>
+          <li>Agreed SLAs and escalation</li>
+          <li>Quarterly performance reviews</li>
+        </ul>
+      </section>
+      <section class="tier">
+        <h3>Approved</h3>
+        <ul>
+          <li>Qualified & onboarded</li>
+          <li>Meets compliance requirements</li>
+          <li>Bid‑by‑bid engagement</li>
+        </ul>
+      </section>
+    </div>
+
+    <h2 class="section-title">Sectors we serve</h2>
+    <div class="sectors">
+      <div class="sector">
+        <h4><i class="fa fa-building-columns"></i> Public Sector</h4>
+        <p>National programs, public procurement, and infrastructure support.</p>
+      </div>
+      <div class="sector">
+        <h4><i class="fa fa-industry"></i> Industrial</h4>
+        <p>Materials, equipment, and safety supplies at scale.</p>
+      </div>
+      <div class="sector">
+        <h4><i class="fa fa-hand-holding-heart"></i> Development</h4>
+        <p>Donor‑funded initiatives with compliance and reporting.</p>
+      </div>
+      <div class="sector">
+        <h4><i class="fa fa-shop"></i> Private</h4>
+        <p>Retail, services, and SMB enablement.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Case studies (placeholders)</h2>
+    <div class="cases">
+      <article class="case">
+        <div class="img">Case image / logo</div>
+        <div class="body">
+          <h3>Rapid procurement for national program</h3>
+          <p class="meta">Supply Chain • Compliance</p>
+          <a class="more" href="#">Read case</a>
+        </div>
+      </article>
+      <article class="case">
+        <div class="img">Case image / logo</div>
+        <div class="body">
+          <h3>Operations uplift across 4 regions</h3>
+          <p class="meta">Operations • Strategy</p>
+          <a class="more" href="#">Read case</a>
+        </div>
+      </article>
+      <article class="case">
+        <div class="img">Case image / logo</div>
+        <div class="body">
+          <h3>Market entry with channel partners</h3>
+          <p class="meta">Strategy • Research</p>
+          <a class="more" href="#">Read case</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta">
+      <a class="btn" href="mailto:info@aimseon.com"><i class="fa fa-envelope"></i> Become a partner</a>
+      <a class="btn" href="/services.html"><i class="fa fa-arrow-left"></i> Explore Services</a>
+    </div>
+  </main>
+
+  <footer>© 2025 AIMSEON</footer>
+<script>
+(function(){
+  const path = location.pathname.replace(/\/+$/, '');
+  const file = path.split('/').pop() || 'index.html';
+  const dir = path.split('/').slice(0,-1).join('/');
+  // Map page to nav key
+  const map = {
+    'index.html':'home',
+    'services.html':'services',
+    'brands.html':'brands',
+    'about.html':'about',
+    'team.html':'team',
+    'blog.html':'blog',
+    'contact.html':'contact',
+    'business-strategy.html':'services',
+    'operations-optimization.html':'services',
+    'supply-chain.html':'services',
+    'market-research.html':'services',
+    'company.html':'about',
+    'mission-vision.html':'about'
+  };
+  let key = map[file] || '';
+  // Handle nested team: if path ends with /about/team.html, force 'team'
+  if (/\/about\/team\.html$/.test(path)) key = 'team';
+  document.querySelectorAll(`[data-nav="${key}"]`).forEach(a=>{
+    a.style.color = 'var(--accent)';
+    a.style.fontWeight = '700';
+  });
+
+  const toggle = document.querySelector('.menu-toggle');
+  const dd = document.getElementById('menuDropdown');
+  function close(){ if(dd){ dd.classList.remove('show'); } if(toggle){ toggle.setAttribute('aria-expanded','false'); } }
+  toggle && toggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const open = !dd?.classList.contains('show');
+    dd && dd.classList.toggle('show');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', (e)=>{ if(dd && !dd.contains(e.target) && !toggle?.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>
+<script>
+// GH Pages subfolder fixer — keeps links working at /username.github.io/repo/
+(function () {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var repo = parts[0] || ''; // e.g., 'aimseon'
+  var prefix = repo ? '/' + repo : '';
+
+  // Fix root-slash links
+  document.querySelectorAll('a[href^="/"]').forEach(function (a) {
+    var h = a.getAttribute('href');
+    if (!h.startsWith(prefix + '/')) a.setAttribute('href', prefix + h);
+  });
+
+  // Fix hardcoded domain links to aimseon.com
+  document.querySelectorAll('a[href^="https://aimseon.com"]').forEach(function (a) {
+    var rel = a.getAttribute('href').replace('https://aimseon.com', '');
+    rel = rel.replace(/^\/+/, '');  // strip leading slashes
+    a.setAttribute('href', (prefix ? prefix + '/' : '') + rel);
+  });
+})();
+</script>

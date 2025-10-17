@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIMSEON - The Timeless Ambition</title>
+  <style>
+    :root { --accent:#00adb5; --header-h:72px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body { margin: 0; font-family: "Arial", system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background-color: #0d0d0d; color: #f5f5f5; overflow-x: hidden; position: relative; }
+
+    header { position: fixed; inset: 0 0 auto 0; width: 100%; background: rgba(17, 17, 17, 0.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; z-index: 1000; border-bottom: 1px solid #222; height: var(--header-h); }
+    header .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 3px; color: #fff; user-select: none; }
+    nav { display: flex; gap: 1.5rem; }
+    nav a { text-decoration: none; color: #f5f5f5; font-weight: 500; transition: color 0.2s ease; }
+    nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    nav a:hover { color: var(--accent); }
+
+    .menu-toggle { display: none; cursor: pointer; font-size: 1.8rem; color: #f5f5f5; background: none; border: none; margin-left: 1rem; }
+    .menu-toggle:focus-visible { outline: 2px solid var(--accent); border-radius: 6px; }
+    .menu-dropdown { display: none; position: absolute; top: calc(var(--header-h) - 4px); right: 20px; background: #222; border: 1px solid #333; border-radius: 8px; flex-direction: column; min-width: 170px; z-index: 1001; opacity: 0; transform: translateY(-10px); transition: opacity 0.25s ease, transform 0.25s ease; }
+    .menu-dropdown.show { display: flex; opacity: 1; transform: translateY(0); }
+    .menu-dropdown a { padding: 0.75rem 1rem; text-decoration: none; color: #f5f5f5; display: block; }
+    .menu-dropdown a:hover { background: var(--accent); color: #fff; }
+
+    section { min-height: 100vh; padding: calc(var(--header-h) + 2rem) 2rem 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; z-index: 2; scroll-margin-top: calc(var(--header-h) + 12px); }
+
+    .hero { background: linear-gradient(135deg, #0d0d0d, #1a1a1a); }
+    .hero .infinity-svg { width: 300px; height: auto; margin-bottom: 30px; }
+    .hero .infinity-path { fill: none; stroke: #fff; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 3s ease-in-out infinite; }
+    .hero h1 { font-size: 3.2rem; margin-bottom: 1rem; color: #f5f5f5; }
+    .hero p { font-size: 1.15rem; max-width: 680px; line-height: 1.6; color: #ddd; }
+    .cta-button { margin-top: 2rem; padding: 0.9rem 1.8rem; background: var(--accent); border: none; border-radius: 30px; color: #fff; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.2s; text-decoration: none; }
+    .cta-button:hover { background: #008a91; transform: translateY(-3px); }
+
+    footer { background: #111; text-align: center; padding: 1rem; font-size: 0.9rem; border-top: 1px solid #222; z-index: 2; position: relative; color: #aaa; }
+
+    /* Intro screen */
+    #intro { position: fixed; inset: 0; background: #0d0d0d; display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 2000; transition: opacity 0.8s ease; }
+    #intro.hidden { opacity: 0; pointer-events: none; }
+    .infinity-svg { width: 150px; height: 80px; }
+    .infinity-path { fill: none; stroke: #fff; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 500; stroke-dashoffset: 500; animation: draw 3s ease-in-out infinite; }
+    @keyframes draw { 0% { stroke-dashoffset: 600; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -600; } }
+
+    /* Scroll indicator */
+    .scroll-indicator { margin-top: 40px; font-size: 0.9rem; color: #aaa; display: flex; flex-direction: column; align-items: center; animation: bounce 2s infinite; cursor: pointer; }
+    .scroll-indicator svg { width: 24px; height: 24px; margin-top: 5px; fill: #aaa; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+    /* Services cards */
+    .services-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; width: 100%; max-width: 1000px; }
+    .service-card { background: #1a1a1a; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.6); transition: transform 0.2s, box-shadow 0.2s; }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 0 20px rgba(0,173,181,0.6); }
+    .service-card h3 { margin-bottom: 1rem; color: var(--accent); }
+    .service-card p { color: #ccc; margin-bottom: 1.5rem; }
+    .service-card .card-btn { padding: 0.6rem 1.2rem; border: none; border-radius: 20px; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+    .service-card .card-btn:hover { background: #008a91; }
+
+    /* Brands auto slider */
+    .brands-slider { overflow: hidden; width: 100%; max-width: 1100px; margin-top: 2rem; position: relative; }
+    .brands-track { display: flex; width: max-content; gap: 3rem; animation: slideBrands 20s linear infinite; will-change: transform; }
+    .brands-slider:hover .brands-track { animation-play-state: paused; }
+    .brand-item { display: inline-flex; align-items: center; justify-content: center; }
+    .brand-logo { width: 120px; height: auto; opacity: 0.85; transition: transform 0.2s, opacity 0.2s; cursor: pointer; }
+    .brand-logo:hover, .brand-logo:focus { transform: scale(1.08); opacity: 1; }
+    @keyframes slideBrands { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* About section */
+    .about-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; max-width: 1000px; width: 100%; }
+    .about-card { background: #1a1a1a; border-radius: 12px; padding: 2rem; box-shadow: 0 0 10px rgba(0,0,0,0.6); transition: transform 0.3s, box-shadow 0.3s; text-align: left; }
+    .about-card:hover { transform: translateY(-6px); box-shadow: 0 0 18px rgba(0,173,181,0.5); }
+    .about-card h3 { margin-bottom: 1rem; color: var(--accent); }
+    .about-card p { margin-bottom: 1rem; color: #ccc; line-height: 1.6; }
+    .about-card .about-btn { display: inline-block; padding: 0.6rem 1.2rem; border: none; border-radius: 20px; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+    .about-card .about-btn:hover { background: #008a91; }
+
+    /* Background infinity sign */
+    #background-infinity { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: auto; opacity: 0.07; z-index: 1; pointer-events: none; }
+    #background-infinity .infinity-path { stroke: #555; animation: draw 6s ease-in-out infinite; }
+
+    /* Social Buttons */
+    .social-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
+    .social-btn { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: #1a1a1a; border: 2px solid var(--accent); color: var(--accent); font-size: 1.4rem; transition: all 0.2s ease; text-decoration: none; }
+    .social-btn:hover { background: var(--accent); color: #fff; transform: translateY(-4px); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .menu-toggle { display: block; }
+      .hero .infinity-svg { width: 220px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      .brands-track { gap: 2rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Intro overlay -->
+  <div id="intro" aria-label="Intro animation" tabindex="0">
+    <svg class="infinity-svg" viewBox="0 0 200 100" role="img" aria-label="Infinity logo">
+      <path class="infinity-path" d="M20,50 C20,20 80,20 100,50 C120,80 180,80 180,50 C180,20 120,20 100,50 C80,80 20,80 20,50 Z" />
+    </svg>
+    <p style="margin-top:20px; font-size:1.2rem; color:#f5f5f5;">AIMSEON</p>
+    <div class="scroll-indicator" id="scrollIndicator" aria-label="Scroll to begin">
+      <span>Scroll Down</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16l-6-6h12z"/></svg>
+    </div>
+  </div>
+
+  <!-- Background infinity sign -->
+  <svg id="background-infinity" viewBox="0 0 200 100" aria-hidden="true">
+    <path class="infinity-path" d="M20,50 C20,20 80,20 100,50 C120,80 180,80 180,50 C180,20 120,20 100,50 C80,80 20,80 20,50 Z" />
+  </svg>
+
+  <!-- Header -->
+  <header>
+  <div class="logo">AIMSEON</div>
+  <nav aria-label="Primary">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="services.html" data-nav="services">Services</a>
+    <a href="brands.html" data-nav="brands">Brands</a>
+    <a href="about.html" data-nav="about">About</a>
+    <a href="about/team.html" data-nav="team">Team</a>
+    <a href="blog.html" data-nav="blog">Blog</a>
+    <a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuDropdown">&#x22EE;</button>
+  <div class="menu-dropdown" id="menuDropdown" role="menu">
+    <a href="index.html" role="menuitem" data-nav="home">Home</a>
+    <a href="services.html" role="menuitem" data-nav="services">Services</a>
+    <a href="brands.html" role="menuitem" data-nav="brands">Brands</a>
+    <a href="about.html" role="menuitem" data-nav="about">About</a>
+    <a href="about/team.html" role="menuitem" data-nav="team">Team</a>
+    <a href="blog.html" role="menuitem" data-nav="blog">Blog</a>
+    <a href="contact.html" role="menuitem" data-nav="contact">Contact</a>
+  </div>
+</header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <svg class="infinity-svg" viewBox="0 0 200 100" role="img" aria-label="Infinity logo">
+      <path class="infinity-path" d="M20,50 C20,20 80,20 100,50 C120,80 180,80 180,50 C180,20 120,20 100,50 C80,80 20,80 20,50 Z" />
+    </svg>
+    <h1>The Timeless Ambition</h1>
+    <p>At AIMSEON, we provide consultancy and supply solutions that empower businesses to grow with vision, resilience, and timeless ambition.</p>
+    <a class="cta-button" href="/contact.html">Get Started</a>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>We specialize in strategic consultancy and tailored supply solutions across diverse industries.</p>
+    <div class="services-container">
+      <div class="service-card">
+        <h3>Business Strategy & Growth</h3>
+        <p>We help you craft growth strategies and execute them effectively.</p>
+        <a class="card-btn" href="/contact.html">Learn More</a>
+      </div>
+      <div class="service-card">
+        <h3>Operations & Process Optimization</h3>
+        <p>Streamline processes to boost efficiency and reduce costs.</p>
+        <a class="card-btn" href="/contact.html">Learn More</a>
+      </div>
+      <div class="service-card">
+        <h3>Supply Chain & Procurement</h3>
+        <p>Robust supply solutions tailored for your business needs.</p>
+        <a class="card-btn" href="/contact.html">Learn More</a>
+      </div>
+      <div class="service-card">
+        <h3>Market Research & Insights</h3>
+        <p>Unlock insights to make data-driven and impactful decisions.</p>
+        <a class="card-btn" href="/contact.html">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section id="brands">
+    <h2>Our Partners & Brands</h2>
+    <p>We proudly collaborate with leading brands to deliver exceptional value.</p>
+    <div class="brands-slider" aria-label="Brand logos carousel">
+      <div class="brands-track">
+        <a class="brand-item" href="#" aria-label="Brand 1"><img src="brand1.png" alt="Brand 1" class="brand-logo" loading="lazy" /></a>
+        <a class="brand-item" href="#" aria-label="Brand 2"><img src="brand2.png" alt="Brand 2" class="brand-logo" loading="lazy" /></a>
+        <a class="brand-item" href="#" aria-label="Brand 3"><img src="brand3.png" alt="Brand 3" class="brand-logo" loading="lazy" /></a>
+        <a class="brand-item" href="#" aria-label="Brand 4"><img src="brand4.png" alt="Brand 4" class="brand-logo" loading="lazy" /></a>
+        <!-- duplicate set for seamless loop -->
+        <a class="brand-item" href="#" aria-label="Brand 1"><img src="brand1.png" alt="Brand 1" class="brand-logo" loading="lazy" /></a>
+        <a class="brand-item" href="#" aria-label="Brand 2"><img src="brand2.png" alt="Brand 2" class="brand-logo" loading="lazy" /></a>
+        <a class="brand-item" href="#" aria-label="Brand 3"><img src="brand3.png" alt="Brand 3" class="brand-logo" loading="lazy" /></a>
+        <a class="brand-item" href="#" aria-label="Brand 4"><img src="brand4.png" alt="Brand 4" class="brand-logo" loading="lazy" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about-container">
+      <div class="about-card">
+        <h3>Our Mission</h3>
+        <p>To deliver timeless solutions with creativity, precision, and impact, helping clients achieve ambitious goals.</p>
+        <a class="about-btn" href="/contact.html">Read More</a>
+      </div>
+      <div class="about-card">
+        <h3>Our Vision</h3>
+        <p>Empowering businesses to scale sustainably through consultancy and strategic supply partnerships.</p>
+        <a class="about-btn" href="/contact.html">Our Approach</a>
+      </div>
+      <div class="about-card">
+        <h3>Our Values</h3>
+        <p>Integrity, reliability, and innovation guide everything we do for our partners and clients.</p>
+        <a class="about-btn" href="/contact.html">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <a class="cta-button" href="mailto:info@aimseon.com">Request a Consultation</a>
+
+    <div class="social-buttons">
+      <a href="https://wa.me/1234567890" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://facebook.com" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://linkedin.com" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://youtube.com" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://tiktok.com" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="mailto:info@aimseon.com" class="social-btn" aria-label="Email"><i class="fa fa-envelope"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 AIMSEON | The Timeless Ambition
+  </footer>
+
+  <script>
+    // Helpers
+    const $ = (sel, ctx=document) => ctx.querySelector(sel);
+
+    // Intro interactions
+    const intro = $('#intro');
+    const scrollIndicator = $('#scrollIndicator');
+    function hideIntro(){ if (!intro.classList.contains('hidden')) intro.classList.add('hidden'); }
+    function goToHome(){ hideIntro(); $('#home').scrollIntoView({ behavior:'smooth' }); }
+
+    // Hide intro on scroll/wheel/touch/indicator click/Enter/Space
+    window.addEventListener('scroll', () => { if (window.scrollY > 10) hideIntro(); }, { passive: true });
+    window.addEventListener('wheel', hideIntro, { passive: true, once: true });
+    window.addEventListener('touchstart', hideIntro, { passive: true, once: true });
+    if (scrollIndicator) scrollIndicator.addEventListener('click', goToHome);
+    intro.addEventListener('click', (e)=>{ if(e.target === intro) goToHome(); });
+    intro.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') goToHome(); });
+
+    // Remove intro from DOM after fade for performance
+    intro.addEventListener('transitionend', () => { if (intro.classList.contains('hidden')) intro.remove(); });
+
+    // Mobile menu toggle with ARIA updates and Esc to close
+    const menuToggle = $('.menu-toggle');
+    const menuDropdown = $('#menuDropdown');
+    function closeMenu(){ menuDropdown.classList.remove('show'); menuToggle.setAttribute('aria-expanded', 'false'); }
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willShow = !menuDropdown.classList.contains('show');
+      menuDropdown.classList.toggle('show');
+      menuToggle.setAttribute('aria-expanded', String(willShow));
+    });
+    document.addEventListener('click', (e) => { if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+    // Close mobile menu when a link is clicked
+    menuDropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  </script>
+<script>
+(function(){
+  const path = location.pathname.replace(/\/+$/, '');
+  const file = path.split('/').pop() || 'index.html';
+  const dir = path.split('/').slice(0,-1).join('/');
+  // Map page to nav key
+  const map = {
+    'index.html':'home',
+    'services.html':'services',
+    'brands.html':'brands',
+    'about.html':'about',
+    'team.html':'team',
+    'blog.html':'blog',
+    'contact.html':'contact',
+    'business-strategy.html':'services',
+    'operations-optimization.html':'services',
+    'supply-chain.html':'services',
+    'market-research.html':'services',
+    'company.html':'about',
+    'mission-vision.html':'about'
+  };
+  let key = map[file] || '';
+  // Handle nested team: if path ends with /about/team.html, force 'team'
+  if (/\/about\/team\.html$/.test(path)) key = 'team';
+  document.querySelectorAll(`[data-nav="${key}"]`).forEach(a=>{
+    a.style.color = 'var(--accent)';
+    a.style.fontWeight = '700';
+  });
+
+  const toggle = document.querySelector('.menu-toggle');
+  const dd = document.getElementById('menuDropdown');
+  function close(){ if(dd){ dd.classList.remove('show'); } if(toggle){ toggle.setAttribute('aria-expanded','false'); } }
+  toggle && toggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const open = !dd?.classList.contains('show');
+    dd && dd.classList.toggle('show');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', (e)=>{ if(dd && !dd.contains(e.target) && !toggle?.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>
+<script>
+// GH Pages subfolder fixer — keeps links working at /username.github.io/repo/
+(function () {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var repo = parts[0] || ''; // e.g., 'aimseon'
+  var prefix = repo ? '/' + repo : '';
+
+  // Fix root-slash links
+  document.querySelectorAll('a[href^="/"]').forEach(function (a) {
+    var h = a.getAttribute('href');
+    if (!h.startsWith(prefix + '/')) a.setAttribute('href', prefix + h);
+  });
+
+  // Fix hardcoded domain links to aimseon.com
+  document.querySelectorAll('a[href^="https://aimseon.com"]').forEach(function (a) {
+    var rel = a.getAttribute('href').replace('https://aimseon.com', '');
+    rel = rel.replace(/^\/+/, '');  // strip leading slashes
+    a.setAttribute('href', (prefix ? prefix + '/' : '') + rel);
+  });
+})();
+</script>
